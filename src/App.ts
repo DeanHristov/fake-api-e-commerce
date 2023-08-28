@@ -49,7 +49,6 @@ if (NODE_ENV === 'development') {
     );
 }
 
-
 // Adding Routes...
 app.use(`${API_VERSION}/health`, healthRoute);
 
