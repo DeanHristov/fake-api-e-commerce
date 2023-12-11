@@ -50,17 +50,17 @@ functionality is grouped primarily by feature rather than the file type.
 ├── docs                            # Contains files in *.md format with documentation of each API route.
 │   └── *.md                        # Represent a *.md with the route documentation.
 ├── src                             # Application source code is stored here.
-│   ├── constrollers                # A directory contains files that control the behavior of the routes.
+│   ├── controllers                # A directory contains files that control the behavior of the routes.
 │       └── *.ts                    # Controlling how the user interacts with a route.
 │   ├── core                        # The core functionality is stored here.
 │       └── *.ts                    # Usually, represent models.
-│   ├── middlewares                 # A directory that contains files with expressjs based middlewares.
-│       └── *.ts                    # Each file contains single middleware.
+│   ├── middlewares                 # A directory that contains files with expressjs-based middlewares.
+│       └── *.ts                    # Each file contains a single middleware.
 │   ├── routes                      # Contains files that represent endpoints (URIs) and respond to client requests.
 │       └── *.ts                    # Represent a single endpoint.
 │   ├── utils                       # A directory that contains utility files.
 │       └── *.ts                    # A utility file - Common used functionality.
-│   ├── mocks                       # A directory that could contains fake-data. It is used only for seeding the data.
+│   ├── mocks                       # A directory that could contain fake-data. It is used only for seeding the data.
 │       └── *.json                  # A single unit, that contains fake data.
 │   ├── App.ts                      # The entry point of the app.
 ├── .env                            # App-related ENV variables are stored here. MUST be created manually!
@@ -72,7 +72,7 @@ functionality is grouped primarily by feature rather than the file type.
 ├── jest.config.js                  # Config file for Jestjs
 ├── nodemon.json                    # Config file for nodemon
 ├── package.json                    # The heart of the app. It holds important metadata about a project like scripts dependencies
-├── package-lock.json               # Place where we controls the dependencies
+├── package-lock.json               # Place where we control the dependencies
 ├── README.md                       # A documentation file
 ├── tsconfig.json                   # Config file for typescript
 ```
@@ -91,6 +91,28 @@ All tasks automation are based on [NPM scripts](https://docs.npmjs.com/misc/scri
 | `npm run prettier-format` | Code formatting                                       |
 
 ## Running the Project
+
+Before starting the app you must create **~/.env** file with the following
+variables:
+
+```dotenv
+NODE_PORT=3002
+
+API_VERSION=/api/v1
+
+USE_COOKIE=false
+
+# 1m = 60000
+# 10m = 600000
+# 1h = 3600000ms
+JWT_EXPIRE=10m
+
+# 1m = 60000ms
+# 10m = 600000ms
+# 1h = 3600000ms
+JWT_COOKIE_EXPIRE=10m
+JWT_SECRET=super-secret-word
+```
 
 Running the app in **development** mode.
 
