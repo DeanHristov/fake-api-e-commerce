@@ -1,4 +1,9 @@
 {
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register"
+    ]
+  },
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -10,17 +15,26 @@
     "rootDir": "src",
     "strict": true,
     "esModuleInterop": true,
+    "removeComments": true,
     "resolveJsonModule": true,
     "types": [
       "node",
       "jest"
     ],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@tests/*": [
+        "./tests/*"
+      ]
+    }
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
-    "src/**/*.spec.ts"
+    "src/mocks/**/*"
   ]
 }

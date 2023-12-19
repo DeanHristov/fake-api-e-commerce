@@ -1,11 +1,5 @@
 # Motivation
 
-Basically, When we start a new project we have to do a whole bunch of boring work before starting the actual work,
-right? Also, we have to provide some kind of basic protection as well. This project trying to solve this problem.
-
-This repository is a boilerplate for API-based development and it is a simple start kit (blueprint), that provides
-minimal/common functionality to start building an API based on the ExpressJS framework and TypeScript.
-
 ## Requirements
 
 - [Node](https://nodejs.org/en/) `^16.15.0`
@@ -79,7 +73,8 @@ functionality is grouped primarily by feature rather than the file type.
 
 ## Main tasks
 
-All tasks automation are based on [NPM scripts](https://docs.npmjs.com/misc/scripts).
+All tasks automation are based
+on [NPM scripts](https://docs.npmjs.com/misc/scripts).
 
 | Tasks                     | Description                                           |
 |---------------------------|-------------------------------------------------------|
