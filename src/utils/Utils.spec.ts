@@ -24,4 +24,19 @@ describe('Class / Utils', () => {
     expect(Utils.isNotEmpty({ key: 'value' })).toBeTruthy();
     expect(Utils.isNotEmpty([1, 2, 3])).toBeTruthy();
   });
+
+  it('Should be able to return positive result if some of the fields are null or undefined', () => {
+    expect(Utils.isMissingFields(['', null])).toBeTruthy();
+    expect(Utils.isMissingFields(['', undefined])).toBeTruthy();
+    expect(Utils.isMissingFields([null, undefined])).toBeTruthy();
+    expect(Utils.isMissingFields([])).toBeTruthy();
+  });
+
+  it('Should be able to return negative result if the fields are not null or undefined', () => {
+    expect(Utils.isMissingFields(['', 1])).toBeFalsy();
+    expect(Utils.isMissingFields([''])).toBeFalsy();
+    expect(Utils.isMissingFields([{}])).toBeFalsy();
+    expect(Utils.isMissingFields([true])).toBeFalsy();
+    expect(Utils.isMissingFields([false])).toBeFalsy();
+  });
 });

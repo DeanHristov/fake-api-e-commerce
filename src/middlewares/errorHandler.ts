@@ -1,12 +1,12 @@
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 import ErrorResponse from '../utils/ErrorResponse';
 
 const errorHandler = (
-    err: ErrorResponse,
-    req: Request,
-    res: Response,
+  err: ErrorResponse,
+  req: Request,
+  res: Response,
 ): void => {
-  const error = {...err};
+  const error = { ...err };
 
   res.status(error.statusCode ?? 500);
   res.json({

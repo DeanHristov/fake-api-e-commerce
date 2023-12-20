@@ -42,4 +42,19 @@ export default class Utils {
   public static isNotEmpty(val: any): boolean {
     return !Utils.isEmpty(val);
   }
+
+  /**
+   * @description Check if in the array has any values with null | undefined
+   * @param arrayOfFields {Array<any>}
+   * @return boolean
+   */
+  public static isMissingFields(arrayOfFields: any[]): boolean {
+    if (arrayOfFields.length === 0) return true;
+
+    for (const field of arrayOfFields) {
+      if (Utils.isNull(field)) return true;
+    }
+
+    return false;
+  }
 }

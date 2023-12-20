@@ -1,4 +1,4 @@
-import {STATUS_CODE} from './statusCodes';
+import { STATUS_CODE } from './statusCodes';
 
 export default class ErrorResponse extends Error {
   public statusCode: STATUS_CODE;

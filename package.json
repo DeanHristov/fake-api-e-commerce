@@ -1,14 +1,17 @@
 {
-  "name": "ts-express-starter-kit",
-  "description": "Simple blueprint for expressjs and typescript",
+  "name": "fake-api-e-commerce",
+  "description": "The repo is a fake! It manages users, products, carts, sessions, and others. It protects the routes with an authentication (JWT/cookies).",
   "author": "D. Hristov <dean.hristovv@gmail.com>",
   "version": "1.0.0",
-  "main": "App.ts",
+  "main": "src/App.ts",
   "keywords": [
     "typescript",
     "expressjs",
     "API",
-    "NodeJS"
+    "NodeJS",
+    "jwt",
+    "rest-api",
+    "expressjs"
   ],
   "license": "MIT",
   "scripts": {
@@ -32,6 +35,7 @@
     "jsonwebtoken": "^9.0.1",
     "ms": "^2.1.3",
     "nedb-async": "^0.1.6",
+    "qs": "^6.11.2",
     "uuid": "^9.0.0",
     "xss-clean": "^0.1.4"
   },

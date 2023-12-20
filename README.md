@@ -12,7 +12,7 @@ above [requirements](#requirements), it is time to clone the project
 locally by doing the following:
 
 ```bash
-$ git clone git@github.com:DeanHristov/ts-express-starter-kit.git <project-name>
+$ git clone git@github.com:DeanHristov/fake-api-e-commerce.git <project-name>
 $ cd <project-name>
 ```
 
@@ -22,13 +22,14 @@ When you're done with the steps above, run the following command:
 $ npm install # or yarn install
 ```
 
-## The starter comes with built-in functionality
+## The API comes with the following functionality
 
 - Prevent cross site scripting - XSS
 - Add a rate limit for requests of 100 requests per 10 minutes
 - Protect against http param polution (hpp)
 - Add headers for security (helmet)
 - Use cors to make API public
+- Data pagination
 
 ## Project Structure
 
@@ -41,10 +42,10 @@ functionality is grouped primarily by feature rather than the file type.
 │   └── *.js
 │   └── [dir-name]                  # Sub directory
 │       └── *.js
-├── docs                            # Contains files in *.md format with documentation of each API route.
-│   └── *.md                        # Represent a *.md with the route documentation.
+├── docs                            # Storing the postman collections
+│   └── *.json                      # Represent a single collection
 ├── src                             # Application source code is stored here.
-│   ├── controllers                # A directory contains files that control the behavior of the routes.
+│   ├── controllers                 # A directory contains files that control the behavior of the routes.
 │       └── *.ts                    # Controlling how the user interacts with a route.
 │   ├── core                        # The core functionality is stored here.
 │       └── *.ts                    # Usually, represent models.
@@ -63,7 +64,7 @@ functionality is grouped primarily by feature rather than the file type.
 ├── .eslintrc                       # Config file for ESLint
 ├── .gitignore                      # Config file for GIT
 ├── .prettierrc                     # Config file for Prettier
-├── jest.config.js                  # Config file for Jestjs
+├── jest.config.ts                  # Config file for Jestjs
 ├── nodemon.json                    # Config file for nodemon
 ├── package.json                    # The heart of the app. It holds important metadata about a project like scripts dependencies
 ├── package-lock.json               # Place where we control the dependencies
@@ -92,6 +93,7 @@ variables:
 
 ```dotenv
 NODE_PORT=3002
+DB_MOCKING=true
 
 API_VERSION=/api/v1
 
@@ -123,7 +125,7 @@ Firstly, build the app with the following command:
 $ npm run build
 ```
 
-Running the app in **development** mode.
+Running the app in **production** mode.
 
 ```bash
 $ npm start
@@ -160,5 +162,5 @@ $ npm start
 
 ## Made by
 
-Author: [D. Hristov](https://dhristov.eu/) | Version: [1.0.0](/docs/) |
-License: [MIT](https://opensource.org/licenses/MIT)
+Author: [D. Hristov](https://dhristov.eu/) | [Documentation](https://github.com/DeanHristov/fake-api-e-commerce/wiki) |
+Version: **v1.0.0**

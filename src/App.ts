@@ -6,14 +6,15 @@ import express, { Express } from 'express';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import hpp from 'hpp';
-import morgan from 'morgan';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+import morgan from 'morgan'; // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import xssClean from 'xss-clean';
 
 import FakeDB from '@/core/FakeDB';
 import healthRoute from '@/routes/healthRoute';
 import errorHandler from '@/middlewares/errorHandler';
+import productsRoute from '@/routes/productsRoute';
+import cartRouter from '@/routes/cartRouter';
 
 const { NODE_PORT, NODE_ENV, API_VERSION } = process.env;
 const APP_PORT = NODE_PORT || 3000;
@@ -54,6 +55,8 @@ app.use(
 
 // Adding Routes...
 app.use(`${API_VERSION}/health`, healthRoute);
+app.use(`${API_VERSION}/products`, productsRoute);
+app.use(`${API_VERSION}/carts`, cartRouter);
 
 app.use(errorHandler);
 
