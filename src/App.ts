@@ -12,9 +12,9 @@ import xssClean from 'xss-clean';
 
 import FakeDB from '@/core/FakeDB';
 import healthRoute from '@/routes/healthRoute';
-import errorHandler from '@/middlewares/errorHandler';
 import productsRoute from '@/routes/productsRoute';
 import cartRouter from '@/routes/cartRouter';
+import errorHandler from '@/middlewares/errorHandler';
 
 const { NODE_PORT, NODE_ENV, API_VERSION } = process.env;
 const APP_PORT = NODE_PORT || 3000;

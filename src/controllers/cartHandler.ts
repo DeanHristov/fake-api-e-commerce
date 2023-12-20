@@ -46,7 +46,10 @@ const getCartById = async (
 
   if (Utils.isNull(cart)) {
     return next(
-      new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.BAD_REQUEST),
+      new ErrorResponse(
+        `Error! The resource is not found!`,
+        STATUS_CODE.NOT_FOUND,
+      ),
     );
   }
 

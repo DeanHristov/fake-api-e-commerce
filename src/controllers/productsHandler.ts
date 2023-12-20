@@ -42,7 +42,10 @@ const getProductById = async (
 
   if (Utils.isNull(product)) {
     return next(
-      new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.BAD_REQUEST),
+      new ErrorResponse(
+        `Error! The resource is not found!`,
+        STATUS_CODE.NOT_FOUND,
+      ),
     );
   }
   res.status(STATUS_CODE.OK).json(new Response('success', product));
