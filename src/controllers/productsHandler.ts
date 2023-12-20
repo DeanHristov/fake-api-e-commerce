@@ -134,7 +134,7 @@ const deleteProduct = async (
 
   if (Utils.isNull(product)) {
     return next(
-      new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.BAD_REQUEST),
+      new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.NOT_FOUND),
     );
   }
 

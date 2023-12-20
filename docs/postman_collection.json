@@ -1,355 +1,511 @@
 {
-  "info": {
-    "_postman_id": "59a7849b-be45-46d7-a07a-cfeb7c82d50c",
-    "name": "fake-api-e-commerce",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "14552290"
-  },
-  "item": [
-    {
-      "name": "products",
-      "item": [
-        {
-          "name": "fetch all products",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/products",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products"
-              ],
-              "query": [
-                {
-                  "key": "limit",
-                  "value": "20",
-                  "disabled": true
-                },
-                {
-                  "key": "page",
-                  "value": "2",
-                  "disabled": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "fetch a single product",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/products/:productId",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products",
-                ":productId"
-              ],
-              "variable": [
-                {
-                  "key": "productId",
-                  "value": "31345f03-5c2b-4ed0-b5f1-c9f22d397ae4"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete a product",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/products/:productId",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products",
-                ":productId"
-              ],
-              "variable": [
-                {
-                  "key": "productId",
-                  "value": "31345f03-5c2b-4ed0-b5f1-c9f22d397ae4"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update an existing product",
-          "request": {
-            "method": "PATCH",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "  {\n    \"title\": \"iPhone 10\",\n    // \"description\": \"An apple mobile which is nothing like apple 2\",\n    \"price\": 1249\n    // \"discountPercentage\": 16,\n    // \"rating\": 2,\n    // \"stock\": 20,\n    // \"brand\": \"Apple\",\n    // \"category\": \"smartphones\",\n    // \"thumbnail\": \"https://i.dummyjson.com/data/products/1/thumbnail.jpg\",\n    // \"images\": []\n  }\n",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/products/:productId",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products",
-                ":productId"
-              ],
-              "variable": [
-                {
-                  "key": "productId",
-                  "value": "31345f03-5c2b-4ed0-b5f1-c9f22d397ae4"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create a new product",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "  { \n    \"title\": \"Spring and summershoes\",\n    \"description\": \"Comfortable stretch cloth, lightweight body; ,rubber sole, anti-skid wear;\",\n    \"price\": 20,\n    \"discountPercentage\": 8.71,\n    \"rating\": 4.33,\n    \"stock\": 137,\n    \"brand\": \"Sneakers\",\n    \"category\": \"mens-shoes\",\n    \"thumbnail\": \"https://i.dummyjson.com/data/products/59/thumbnail.jpg\",\n    \"images\": [ ]\n  }",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/products",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products"
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "carts",
-      "item": [
-        {
-          "name": "Fetch all carts",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/carts",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "carts"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Fetch a single cart",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/carts/:cartId",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "carts",
-                ":cartId"
-              ],
-              "variable": [
-                {
-                  "key": "cartId",
-                  "value": "34e1d41b-384a-4bf4-866e-ab5b268d124c"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Fetch cart per user",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/carts/users/:userId",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "carts",
-                "users",
-                ":userId"
-              ],
-              "variable": [
-                {
-                  "key": "userId",
-                  "value": "ba500896-80ca-42bd-b7f7-a743b959203e"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete a cart",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/carts/:cartId",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "carts",
-                ":cartId"
-              ],
-              "variable": [
-                {
-                  "key": "cartId",
-                  "value": "34e1d41b-384a-4bf4-866e-ab5b268d124c"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create a new cart per user",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "  { \n    \"currency\": \"EUR 1\"\n  }",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/carts/users/:userId",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "carts",
-                "users",
-                ":userId"
-              ],
-              "variable": [
-                {
-                  "key": "userId",
-                  "value": "ba500896-80ca-42bd-b7f7-a743b959203e"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update a cart",
-          "request": {
-            "method": "PATCH",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"currency\": \"ABC\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/carts/:cartId",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "carts",
-                ":cartId"
-              ],
-              "variable": [
-                {
-                  "key": "cartId",
-                  "value": "34e1d41b-384a-4bf4-866e-ab5b268d124c"
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:3000/api/v1",
-      "type": "string"
-    },
-    {
-      "key": "token",
-      "value": "",
-      "type": "string"
-    },
-    {
-      "key": "username",
-      "value": "admin@my-site.com",
-      "type": "string"
-    },
-    {
-      "key": "userPassword",
-      "value": "123456",
-      "type": "string"
-    }
-  ]
+	"info": {
+		"_postman_id": "59a7849b-be45-46d7-a07a-cfeb7c82d50c",
+		"name": "fake-api-e-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14552290"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "fetch all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch a single product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/:productId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "31345f03-5c2b-4ed0-b5f1-c9f22d397ae4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/:productId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "31345f03-5c2b-4ed0-b5f1-c9f22d397ae4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"title\": \"iPhone 10\",\n    // \"description\": \"An apple mobile which is nothing like apple 2\",\n    \"price\": 1249\n    // \"discountPercentage\": 16,\n    // \"rating\": 2,\n    // \"stock\": 20,\n    // \"brand\": \"Apple\",\n    // \"category\": \"smartphones\",\n    // \"thumbnail\": \"https://i.dummyjson.com/data/products/1/thumbnail.jpg\",\n    // \"images\": []\n  }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/:productId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "31345f03-5c2b-4ed0-b5f1-c9f22d397ae4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  { \n    \"title\": \"Spring and summershoes\",\n    \"description\": \"Comfortable stretch cloth, lightweight body; ,rubber sole, anti-skid wear;\",\n    \"price\": 20,\n    \"discountPercentage\": 8.71,\n    \"rating\": 4.33,\n    \"stock\": 137,\n    \"brand\": \"Sneakers\",\n    \"category\": \"mens-shoes\",\n    \"thumbnail\": \"https://i.dummyjson.com/data/products/59/thumbnail.jpg\",\n    \"images\": [ ]\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "carts",
+			"item": [
+				{
+					"name": "Fetch all carts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/carts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch a single cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/carts/:cartId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts",
+								":cartId"
+							],
+							"variable": [
+								{
+									"key": "cartId",
+									"value": "34e1d41b-384a-4bf4-866e-ab5b268d124c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch cart per user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/carts/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "ba500896-80ca-42bd-b7f7-a743b959203e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/carts/:cartId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts",
+								":cartId"
+							],
+							"variable": [
+								{
+									"key": "cartId",
+									"value": "34e1d41b-384a-4bf4-866e-ab5b268d124c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new cart per user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  { \n    \"currency\": \"EUR 1\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/carts/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "ba500896-80ca-42bd-b7f7-a743b959203e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a cart",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currency\": \"ABC\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/carts/:cartId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts",
+								":cartId"
+							],
+							"variable": [
+								{
+									"key": "cartId",
+									"value": "34e1d41b-384a-4bf4-866e-ab5b268d124c"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Fetch all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch a single user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "ba500896-80ca-42bd-b7f7-a743b959203e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "ba500896-80ca-42bd-b7f7-a743b959203e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"username\": \"bot-005\",\n    \"name\": \"Real Name\",\n    \"email\": \"my-email5@my-site.com\",\n    \"role\": \"visitor\", \n    \"password\": \"12345\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    // \"username\": \"bot-003\",\n    // \"name\": \"Real Name\",\n    \"email\": \"my-email33@my-site.com\"\n    // \"role\": \"visitor\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "ba500896-80ca-42bd-b7f7-a743b959203e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update passwords",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"ba500896-80ca-42bd-b7f7-a743b959203e\",\n    \"oldPassword\": \"12345\",\n    \"newPassword\": \"13579\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/password-change",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"password-change"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "admin@my-site.com",
+			"type": "string"
+		},
+		{
+			"key": "userPassword",
+			"value": "123456",
+			"type": "string"
+		}
+	]
 }

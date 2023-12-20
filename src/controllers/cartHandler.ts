@@ -72,7 +72,7 @@ const getCartByUserId = async (
 
   if (Utils.isNull(cart)) {
     return next(
-      new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.BAD_REQUEST),
+      new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.NOT_FOUND),
     );
   }
 
@@ -168,7 +168,7 @@ const deleteCart = async (
 
   if (Utils.isNull(cart)) {
     return next(
-      new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.BAD_REQUEST),
+      new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.NOT_FOUND),
     );
   }
 
