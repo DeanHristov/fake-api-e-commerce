@@ -81,6 +81,7 @@ const updateProduct = (
   res: ExpressResponse,
   next: NextFunction,
 ) => {
+  // TODO Do Implementation on this method!
   next(new ErrorResponse('Not implemented yet!', STATUS_CODE.NOT_IMPLEMENTED));
 };
 
@@ -109,7 +110,7 @@ const modifyProduct = async (
   };
   for (const key of inputFields) {
     if (key === '_id') continue;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
     // @ts-ignore
     newProduct[key] = req.body[key] || product[key];
   }

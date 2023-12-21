@@ -16,6 +16,7 @@ import productsRoute from '@/routes/productsRoute';
 import cartRouter from '@/routes/cartRouter';
 import errorHandler from '@/middlewares/errorHandler';
 import usersRoute from '@/routes/usersRoute';
+import authRoute from '@/routes/authRoute';
 
 const { NODE_PORT, NODE_ENV, API_VERSION } = process.env;
 const APP_PORT = NODE_PORT || 3000;
@@ -59,6 +60,7 @@ app.use(`${API_VERSION}/health`, healthRoute);
 app.use(`${API_VERSION}/products`, productsRoute);
 app.use(`${API_VERSION}/carts`, cartRouter);
 app.use(`${API_VERSION}/users`, usersRoute);
+app.use(`${API_VERSION}/auth`, authRoute);
 
 app.use(errorHandler);
 

@@ -1,3 +1,5 @@
+import jwt, { Secret } from 'jsonwebtoken';
+
 export default class Utils {
   /**
    * @description Checking if the value not exists
@@ -56,5 +58,13 @@ export default class Utils {
     }
 
     return false;
+  }
+
+  public static getJWToken(payload: string | Buffer | object): string {
+    const { JWT_SECRET, JWT_EXPIRE } = process.env;
+
+    return jwt.sign(payload, JWT_SECRET as Secret, {
+      expiresIn: JWT_EXPIRE,
+    });
   }
 }

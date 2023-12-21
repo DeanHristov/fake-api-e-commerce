@@ -464,8 +464,68 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// Sign in as a visitor\n// {\n//     \"email\": \"{{visitorEmail}}\",\n//     \"password\": \"{{visitorPassword}}\"\n// }\n\n\n\n// Sign in as a root user\n{     \n    \"email\": \"{{adminEmail}}\",\n    \"password\": \"{{adminPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/sign-in",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Out",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/sign-out",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"sign-out"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -498,13 +558,23 @@
 			"type": "string"
 		},
 		{
-			"key": "username",
+			"key": "adminEmail",
 			"value": "admin@my-site.com",
 			"type": "string"
 		},
 		{
-			"key": "userPassword",
-			"value": "123456",
+			"key": "adminPassword",
+			"value": "12345",
+			"type": "string"
+		},
+		{
+			"key": "visitorEmail",
+			"value": "visitor@my-site.com",
+			"type": "string"
+		},
+		{
+			"key": "visitorPassword",
+			"value": "13579",
 			"type": "string"
 		}
 	]

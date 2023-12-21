@@ -7,14 +7,18 @@ import {
   modifyUser,
   updatePasswords,
 } from '@/controllers/usersHandler';
+import grantAuthentication from '@/middlewares/grantAuthentication';
+import grantAuthorization from '@/middlewares/grantAuthorization';
+import { USER_ROLES } from '@/types';
 
 const router: Router = express.Router();
+router.use(grantAuthentication);
 
-router.get('/', getAllUsers);
+router.get('/', grantAuthorization([USER_ROLES.ADMIN]), getAllUsers);
 router.get('/:userId', getUserById);
 
-router.post('/', createUser);
+router.post('/', grantAuthorization([USER_ROLES.ADMIN]), createUser);
 router.patch('/password-change', updatePasswords);
-router.patch('/:userId', modifyUser);
-router.delete('/:userId', deleteUser);
+router.patch('/:userId', grantAuthorization([USER_ROLES.ADMIN]), modifyUser);
+router.delete('/:userId', grantAuthorization([USER_ROLES.ADMIN]), deleteUser);
 export default router;

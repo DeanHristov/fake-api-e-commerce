@@ -2,7 +2,7 @@ import {NextFunction, Request, Response as ExpressResponse} from 'express';
 import bcrypt from 'bcryptjs';
 import {v4 as uuidv4} from 'uuid';
 
-import {IUser} from '@/types';
+import {IUser, USER_ROLES} from '@/types';
 import DataFilter, {IDataFilter} from '@/utils/DataFilter';
 import {STATUS_CODE} from '@/utils/statusCodes';
 import FilteredResponse from '@/utils/FilteredResponse';
@@ -43,6 +43,7 @@ const getUserById = async (
 ): Promise<void> => {
   const { db } = res.app.locals;
   const { userId } = req.params;
+  const { user: signedUser } = res.locals;
   const user: IUser = await db.users.asyncFindOne(
     { _id: userId },
     { password: 0 },
@@ -57,7 +58,14 @@ const getUserById = async (
     );
   }
 
-  res.status(STATUS_CODE.OK).json(new Response('success', user));
+  if (signedUser.role === USER_ROLES.ADMIN || signedUser._id === user._id) {
+    res.status(STATUS_CODE.OK).json(new Response('success', user));
+
+    return;
+  }
+
+  // The requested data doesn't belong to the signed user
+  next(new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.BAD_REQUEST));
 };
 
 /**
@@ -71,6 +79,7 @@ const updatePasswords = async (
   next: NextFunction,
 ): Promise<void> => {
   const { db } = res.app.locals;
+  const { user: signedUser } = res.locals;
   const { oldPassword, newPassword, userId } = req.body;
   const user: IUser = await db.users.asyncFindOne({ _id: userId });
 
@@ -78,6 +87,7 @@ const updatePasswords = async (
     Utils.isNull(user) ||
     Utils.isMissingFields([oldPassword, newPassword, userId])
   ) {
+    // Missing fields
     return next(
       new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.BAD_REQUEST),
     );
@@ -93,16 +103,22 @@ const updatePasswords = async (
     );
   }
 
-  const salt: string = bcrypt.genSaltSync(10);
-  const hashedPassword: string = bcrypt.hashSync(newPassword, salt);
-  await db.users.asyncUpdate(
-    { _id: userId },
-    {
-      $set: { ...user, password: hashedPassword },
-    },
-  );
+  if (signedUser.role === USER_ROLES.ADMIN || signedUser._id === user._id) {
+    const salt: string = bcrypt.genSaltSync(10);
+    const hashedPassword: string = bcrypt.hashSync(newPassword, salt);
+    await db.users.asyncUpdate(
+      { _id: userId },
+      {
+        $set: { ...user, password: hashedPassword },
+      },
+    );
 
-  res.status(STATUS_CODE.OK).json(new Response('success'));
+    res.status(STATUS_CODE.OK).json(new Response('success'));
+    return;
+  }
+
+  // The requested action doesn't belong to the signed user
+  next(new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.BAD_REQUEST));
 };
 
 /**

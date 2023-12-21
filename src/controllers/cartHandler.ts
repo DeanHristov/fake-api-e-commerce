@@ -3,7 +3,7 @@ import {v4 as uuidv4} from 'uuid';
 
 import ErrorResponse from '@/utils/ErrorResponse';
 import {STATUS_CODE} from '@/utils/statusCodes';
-import {ICart} from '@/types';
+import {ICart, USER_ROLES} from '@/types';
 import FilteredResponse from '@/utils/FilteredResponse';
 import DataFilter, {IDataFilter} from '@/utils/DataFilter';
 import Utils from '@/utils/Utils';
@@ -67,6 +67,7 @@ const getCartByUserId = async (
   next: NextFunction,
 ): Promise<void> => {
   const { db } = res.app.locals;
+  const { user: signedUser } = res.locals;
   const { userId } = req.params;
   const cart: ICart = await db.carts.asyncFindOne({ userId });
 
@@ -76,7 +77,13 @@ const getCartByUserId = async (
     );
   }
 
-  res.status(STATUS_CODE.OK).json(new Response('success', cart));
+  if (signedUser.role === USER_ROLES.ADMIN || signedUser._id === cart.userId) {
+    res.status(STATUS_CODE.OK).json(new Response('success', cart));
+    return;
+  }
+
+  // The requested action doesn't belong to the signed user
+  next(new ErrorResponse(`Error! Bad Request!`, STATUS_CODE.BAD_REQUEST));
 };
 
 /**
@@ -124,6 +131,7 @@ const updateCart = (
   res: ExpressResponse,
   next: NextFunction,
 ): void => {
+  // TODO Do Implementation on this method!
   next(new ErrorResponse('Not implemented yet!', STATUS_CODE.NOT_IMPLEMENTED));
 };
 
@@ -153,8 +161,22 @@ const modifyCart = async (
 };
 
 /**
+ * @description Apply partial updates to a resource
+ * @route {PATCH} /api/v1/carts/:cartId
+ * @access PRIVATE
+ */
+const modifyCartByUserId = async (
+  req: Request,
+  res: ExpressResponse,
+  next: NextFunction,
+): Promise<void> => {
+  // TODO Do Implementation on this method!
+  // TODO Only the authenticated user can modify its own cart data (except root root user!)
+  next(new ErrorResponse('Not implemented yet!', STATUS_CODE.NOT_IMPLEMENTED));
+};
+/**
  * @description Delete the entire resource from the collection
- * @route {DELETE} /api/v1/products/:productId
+ * @route {DELETE} /api/v1/carts/:cartId
  * @access PRIVATE
  */
 const deleteCart = async (
@@ -181,6 +203,7 @@ export {
   getAllCarts,
   getCartById,
   getCartByUserId,
+  modifyCartByUserId,
   modifyCart,
   updateCart,
 };
