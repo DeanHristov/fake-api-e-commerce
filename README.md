@@ -20,57 +20,59 @@ crutches" for the mind.**
 ### Users, Carts, Products and Authentication
 
 - Authentication is done by using:
-    - JWT for authentication
-    - JWT or cookie expires in 10 minutes - By default
-    - Possibility to store the token in cookie - Optional
-    - Reading/validating the token from "Authentication" header - By default
-    - Reading/validating the token from a cookie - Optional
-    - Invalidating of the JWT - Putting it on blacklist until it expires *
-      *Coming soon!**
+  - JWT for authentication
+  - JWT or cookie expires in 10 minutes - By default
+  - Possibility to store the token in cookie - Optional
+  - Reading/validating the token from "Authentication" header - By default
+  - Reading/validating the token from a cookie - Optional
+  - Invalidating of the JWT - Putting it on blacklist until it expires \*
+    \*Coming soon!\*\*
 - Sign In/Out:
-    - User can login with email and password
-    - Plain text password will compare with stored hashed password
-    - Once logged in, a token will be sent along with a cookie (token = xxx) and
-      in response body as well
-    - Invalidating of the JWT on sign-out - **Coming soon!**
-    - Removing the cookie
+  - User can login with email and password
+  - Plain text password will compare with stored hashed password
+  - Once logged in, a token will be sent along with a cookie (token = xxx) and
+    in response body as well
+  - Invalidating of the JWT on sign-out - **Coming soon!**
+  - Removing the cookie
 - Users:
-    - All users are stored in collection (MongoDB like datastore)
-    - Only the admin has full access to CRUD operations over a any user.
-    - Passwords is hashed before store it in the collection
-    - Changing a user password - Owner or Admin
-    - Mutating a user's data - The owner (user) or admin
-    - Creating/Deleting a user - Only admin has this ability
-    - Password reset - **Coming soon!**
-    - Verifying user creation (by email) - **Coming soon!**
-    - All CRUD operations above require an authentication
-    - Some of the CRUD operations above require authorization (with an admin
-      role)
+  - All users are stored in collection (MongoDB like datastore)
+  - Only the admin has full access to CRUD operations over a any user.
+  - Passwords is hashed before store it in the collection
+  - Changing a user password - Owner or Admin
+  - Mutating a user's data - The owner (user) or admin
+  - Creating/Deleting a user - Only admin has this ability
+  - Password reset - **Coming soon!**
+  - Verifying user creation (by email) - **Coming soon!**
+  - All CRUD operations above require an authentication
+  - Some of the CRUD operations above require authorization (with an admin
+    role)
 - Carts:
-    - All carts are stored in collection (MongoDB like datastore)
-    - Mutating the cart data - The owner (user) or admin
-    - Creating/Deleting a cart - Only admin has this ability
-    - Only the admin has full access to CRUD operations over any cart.
-    - All CRUD operations above require an authentication
-    - Some of the CRUD operations above require authorization (with an admin
-      role)
+  - All carts are stored in collection (MongoDB like datastore)
+  - Mutating the cart data - The owner (user) or admin
+  - Creating/Deleting a cart - Only admin has this ability
+  - Only the admin has full access to CRUD operations over any cart.
+  - All CRUD operations above require an authentication
+  - Some of the CRUD operations above require authorization (with an admin
+    role)
 - Products:
-    - All products are stored in collection (MongoDB like datastore)
-    - Fetching a list of products **`GET /api/v1/products`** - Do not require
-      authentication/authorization
-    - Fetching a single product **`GET /api/v1/products/:productId`** - Do not
-      require authentication/authorization
-    - Mutating the product data - Only admin has this ability
-    - Creating/Deleting a product - Only admin has this ability
-    - Some of the operations above require an authentication
-    - Some of the CRUD operations above require authorization (with an admin
-      role)
+  - All products are stored in collection (MongoDB like datastore)
+  - Fetching a list of products **`GET /api/v1/products`** - Do not require
+    authentication/authorization
+  - Fetching a single product **`GET /api/v1/products/:productId`** - Do not
+    require authentication/authorization
+  - Mutating the product data - Only admin has this ability
+  - Creating/Deleting a product - Only admin has this ability
+  - Some of the operations above require an authentication
+  - Some of the CRUD operations above require authorization (with an admin
+    role)
 
-| # | email                 | pass   | Role    | effects             |
-|---|-----------------------|--------|---------|---------------------|
-| 1 | admin@my-site.com     | 12345  | admin   | Super user          |
-| 2 | visitor@my-site.com   | 13579  | visitor | Mutate its own data |
-| 3 | visitor-1@my-site.com | 024680 | visitor | Mutate its own data |
+Currently, there are three kinds of users. Each of them has different abilities
+
+| #   | email                 | pass   | Role    | effects             |
+| --- | --------------------- | ------ | ------- | ------------------- |
+| 1   | admin@my-site.com     | 12345  | admin   | Super user          |
+| 2   | visitor@my-site.com   | 13579  | visitor | Mutate its own data |
+| 3   | visitor-1@my-site.com | 024680 | visitor | Mutate its own data |
 
 ## Project Structure
 
@@ -119,7 +121,7 @@ All tasks automation are based
 on [NPM scripts](https://docs.npmjs.com/misc/scripts).
 
 | Tasks                     | Description                                           |
-|---------------------------|-------------------------------------------------------|
+| ------------------------- | ----------------------------------------------------- |
 | `npm run start:dev`       | Running the app in **dev** mode                       |
 | `npm run build`           | Building the code in **production-ready** mode        |
 | `npm run start`           | Running the app in **prod** mode                      |

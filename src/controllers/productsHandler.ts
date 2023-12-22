@@ -1,12 +1,12 @@
-import {NextFunction, Request, Response as ExpressResponse} from 'express'; // import { v4 as uuidv4 } from 'uuid';
-import {v4 as uuidv4} from 'uuid';
-import {IProduct} from '@/types';
-import DataFilter, {IDataFilter} from '@/utils/DataFilter';
+import { IProduct } from '@/types';
+import DataFilter, { IDataFilter } from '@/utils/DataFilter';
 import ErrorResponse from '@/utils/ErrorResponse';
 import FilteredResponse from '@/utils/FilteredResponse';
 import Response from '@/utils/Response';
 import Utils from '@/utils/Utils';
-import {STATUS_CODE} from '@/utils/statusCodes';
+import { STATUS_CODE } from '@/utils/statusCodes';
+import { Response as ExpressResponse, NextFunction, Request } from 'express'; // import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 /**
  * @description Fetching the all resources from the collection
@@ -143,10 +143,10 @@ const deleteProduct = async (
 };
 
 export {
+  addNewProduct,
   deleteProduct,
   getProductById,
   getProducts,
   modifyProduct,
   updateProduct,
-  addNewProduct,
 };

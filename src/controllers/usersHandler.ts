@@ -1,14 +1,14 @@
-import {NextFunction, Request, Response as ExpressResponse} from 'express';
 import bcrypt from 'bcryptjs';
-import {v4 as uuidv4} from 'uuid';
+import { Response as ExpressResponse, NextFunction, Request } from 'express';
+import { v4 as uuidv4 } from 'uuid';
 
-import {IUser, USER_ROLES} from '@/types';
-import DataFilter, {IDataFilter} from '@/utils/DataFilter';
-import {STATUS_CODE} from '@/utils/statusCodes';
-import FilteredResponse from '@/utils/FilteredResponse';
-import Utils from '@/utils/Utils';
+import { IUser, USER_ROLES } from '@/types';
+import DataFilter, { IDataFilter } from '@/utils/DataFilter';
 import ErrorResponse from '@/utils/ErrorResponse';
+import FilteredResponse from '@/utils/FilteredResponse';
 import Response from '@/utils/Response';
+import Utils from '@/utils/Utils';
+import { STATUS_CODE } from '@/utils/statusCodes';
 
 /**
  * @description Fetching the all resources from the collection
@@ -225,10 +225,10 @@ const deleteUser = async (
 };
 
 export {
+  createUser,
+  deleteUser,
   getAllUsers,
   getUserById,
   modifyUser,
-  deleteUser,
-  createUser,
   updatePasswords,
 };

@@ -1,13 +1,13 @@
-import {NextFunction, Request, Response as ExpressResponse} from 'express';
-import {v4 as uuidv4} from 'uuid';
+import { Response as ExpressResponse, NextFunction, Request } from 'express';
+import { v4 as uuidv4 } from 'uuid';
 
+import { ICart, USER_ROLES } from '@/types';
+import DataFilter, { IDataFilter } from '@/utils/DataFilter';
 import ErrorResponse from '@/utils/ErrorResponse';
-import {STATUS_CODE} from '@/utils/statusCodes';
-import {ICart, USER_ROLES} from '@/types';
 import FilteredResponse from '@/utils/FilteredResponse';
-import DataFilter, {IDataFilter} from '@/utils/DataFilter';
-import Utils from '@/utils/Utils';
 import Response from '@/utils/Response';
+import Utils from '@/utils/Utils';
+import { STATUS_CODE } from '@/utils/statusCodes';
 
 /**
  * @description Fetching the all resources from the collection
@@ -203,7 +203,7 @@ export {
   getAllCarts,
   getCartById,
   getCartByUserId,
-  modifyCartByUserId,
   modifyCart,
+  modifyCartByUserId,
   updateCart,
 };
