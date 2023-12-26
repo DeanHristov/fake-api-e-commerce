@@ -1,11 +1,11 @@
-import { NextFunction, Request, Response as ExpressResponse } from 'express';
 import bcrypt from 'bcryptjs';
+import { Response as ExpressResponse, NextFunction, Request } from 'express';
 
+import { IUser } from '@/types';
+import ErrorResponse from '@/utils/ErrorResponse';
+import Response from '@/utils/Response';
 import Utils from '@/utils/Utils';
 import { STATUS_CODE } from '@/utils/statusCodes';
-import ErrorResponse from '@/utils/ErrorResponse';
-import { IUser } from '@/types';
-import Response from '@/utils/Response';
 
 const signIn = async (
   req: Request,
@@ -42,4 +42,4 @@ const signOut = async (req: Request, res: ExpressResponse): Promise<void> => {
     .json(new Response('success', { ['sign-out']: true }));
 };
 
-export { signOut, signIn };
+export { signIn, signOut };

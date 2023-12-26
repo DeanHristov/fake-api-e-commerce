@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response as ExpressResponse } from 'express';
+import { Response as ExpressResponse, NextFunction, Request } from 'express';
 import jwt, { JwtPayload, Secret } from 'jsonwebtoken';
 
-import Utils from '@/utils/Utils';
 import ErrorResponse from '@/utils/ErrorResponse';
+import Utils from '@/utils/Utils';
 import { STATUS_CODE } from '@/utils/statusCodes';
 
 const grantAuthentication = async (
@@ -10,7 +10,6 @@ const grantAuthentication = async (
   res: ExpressResponse,
   next: NextFunction,
 ): Promise<void> => {
-  const { db } = res.app.locals;
   const { JWT_SECRET } = process.env;
   const { authorization } = req.headers;
   let { token } = req.cookies;
@@ -29,15 +28,12 @@ const grantAuthentication = async (
   }
 
   try {
-    const decodeToken: JwtPayload = jwt.verify(
+    const decodedToken: JwtPayload = jwt.verify(
       token,
       JWT_SECRET as Secret,
     ) as JwtPayload;
 
-    res.locals.user = await db.users.asyncFindOne({
-      _id: decodeToken.userId,
-    });
-
+    res.locals.user = decodedToken;
     next();
   } catch (reason) {
     next(
