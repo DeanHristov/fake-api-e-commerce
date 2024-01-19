@@ -5,6 +5,8 @@ kind of technology and how I organize the project and code. The repo supports
 basic functionality like GRUD operations, authentication (JWT/cookies), grouping
 users by rules, protecting the endpoints, and others.
 
+This repo is a second part (BE) of the [E-commerce web app](https://github.com/DeanHristov/fake-e-commerce-web-app).
+
 **I haven't used any kind of AI tools like ChatGPT, CoPIlot, or any other "
 crutches" for the mind.**
 
