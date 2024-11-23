@@ -1,3 +1,5 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+
 import jwt, { Secret } from 'jsonwebtoken';
 
 export default class Utils {
